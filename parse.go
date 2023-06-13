@@ -6,7 +6,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/davidmz/go-charset"
+
 	"github.com/davidmz/gotools/mustbe"
 )
 
@@ -61,7 +61,8 @@ func parseAndStoreGeoBase(conf *Config) (eerr error) {
 
 				scanner := bufio.NewScanner(rc)
 				for scanner.Scan() {
-					line := charset.CP1251.Decode(scanner.Bytes())
+					//line := charset.CP1251.Decode(scanner.Bytes())
+					line := scanner.Bytes()
 					parts := strings.Split(strings.TrimSpace(line), "\t")
 
 					id, err := strconv.Atoi(parts[0])
